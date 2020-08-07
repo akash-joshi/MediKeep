@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Button } from "react-native";
 
-const Auth = () => {
+const Auth = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
         title="Sign in with Google"
         onPress={() => {
-          alert("Button Pressed");
+          navigation.navigate("Home");
         }}
       />
     </View>
