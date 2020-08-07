@@ -9,7 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 
-constants/ApiKeys.ts
+constants/*
 
 # macOS
 .DS_Store
