@@ -39,7 +39,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={Auth} />
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home} options={{ title: "Oops!" }} />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
