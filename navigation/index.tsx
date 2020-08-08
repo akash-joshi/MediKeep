@@ -13,6 +13,7 @@ import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
 import Auth from "../screens/Auth";
 import Home from "../screens/Home";
+import Reports from "../screens/Reports";
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -37,7 +38,16 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Home} options={{ title: "Home is where the heart is" }} />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ title: "Home is where the heart is" }}
+      />
+      <Stack.Screen
+        name="Reports"
+        component={Reports}
+        options={{ title: "Check your Reports" }}
+      />
       <Stack.Screen name="Root" component={Auth} />
       <Stack.Screen
         name="NotFound"

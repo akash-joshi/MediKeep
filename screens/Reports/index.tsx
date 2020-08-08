@@ -3,7 +3,7 @@ import React from "react";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../../types";
 
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Button } from "react-native";
 
 import ClickableCard from "../../components/Home/ClickableCard";
 
@@ -28,22 +28,7 @@ const Home = ({ navigation }: StackScreenProps<RootStackParamList, "Home">) => {
           alignItems: "center",
         }}
       >
-        <ClickableCard
-          text={"Measurement"}
-          url={"Reports"}
-          navigation={navigation}
-          background={
-            "linear-gradient(203.55deg, #67B26F -4.43%, #4CA2CD 79.02%)"
-          }
-        />
-        <ClickableCard
-          text={"Reports"}
-          url={"Reports"}
-          navigation={navigation}
-          background={
-            "linear-gradient(203.55deg, #A770EF -4.43%, #CF8BF3 31.21%, #FDB99B 79.02%)"
-          }
-        />
+        <Text>FAB</Text>
       </View>
     </View>
   );

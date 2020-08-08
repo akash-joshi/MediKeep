@@ -2,10 +2,10 @@ import React from "react";
 
 import { View, Text, TouchableOpacity } from "react-native";
 
-export default function ClickableCard({ text, url, background }) {
+export default function ClickableCard({ text, url, background, navigation }) {
   return (
     <TouchableOpacity
-      onPress={() => alert(url)}
+      onPress={() => navigation.navigate(url)}
       style={{
         background,
         borderRadius: 10,
