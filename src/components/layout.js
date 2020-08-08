@@ -5,13 +5,14 @@ import getFirebase, { FirebaseContext } from "./Firebase";
 import withAuthentication from "./Session/withAuthentication";
 import { useStaticQuery, graphql } from "gatsby";
 
-import * as app from 'firebase';
-import 'firebase/firestore';
+import * as app from "firebase";
+import "firebase/firestore";
 
 import Root from "./Root";
 
 import Header from "./header";
 import "./layout.css";
+import "semantic-ui-css/semantic.min.css";
 
 const Main = styled.div`
   max-width: 1200px;
@@ -26,11 +27,10 @@ class Layout extends Component {
   };
 
   componentDidMount() {
-    
     const auth = import("firebase/auth");
     const database = import("firebase/database");
 
-    Promise.all([app, auth, database]).then((values) => {
+    Promise.all([app, auth, database]).then(values => {
       const firebase = getFirebase(values[0]);
 
       this.setState({ firebase });
@@ -46,7 +46,7 @@ class Layout extends Component {
   }
 }
 
-const AppWithAuthentication = withAuthentication(function ({
+const AppWithAuthentication = withAuthentication(function({
   children,
   seo,
 }) {
@@ -62,11 +62,11 @@ const AppWithAuthentication = withAuthentication(function ({
 
   return (
     <section
-      style={{ minHeight: "100vh", background: "rgb(238, 255, 240)" }}
+      style={{ minHeight: "100vh", background: "rgb(255, 255, 255)" }}
     >
       {/* <Navigation /> */}
       <Root seo={seo} />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
       <Main
         style={{
           margin: `0 auto`,
@@ -75,14 +75,14 @@ const AppWithAuthentication = withAuthentication(function ({
         }}
       >
         <main>{children}</main>
-        <footer>
+        {/* <footer>
           © {new Date().getFullYear()}, Built with ❤️ in 🇮🇳 by
           {` `}
           <a href="https://akashj.com">Akash J.</a> &{" "}
           <a href="https://www.linkedin.com/in/akash-nainani">
             Akash N.
           </a>
-        </footer>
+        </footer> */}
       </Main>
     </section>
   );
