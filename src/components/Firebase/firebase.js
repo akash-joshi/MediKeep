@@ -1,12 +1,14 @@
+const firebaseConfig = require("../../../firebase.config");
+
 const config = {
-  apiKey: ,
-  authDomain: ,
-  databaseURL: ,
-  projectId: ,
-  storageBucket: ,
-  messagingSenderId: ,
-  appId: ,
-  measurementId: ,
+  apiKey: firebaseConfig.apiKey,
+  authDomain: firebaseConfig.authDomain,
+  databaseURL: firebaseConfig.databaseURL,
+  projectId: firebaseConfig.projectId,
+  storageBucket: firebaseConfig.storageBucket,
+  messagingSenderId: firebaseConfig.messagingSenderId,
+  appId: firebaseConfig.appId,
+  measurementId: firebaseConfig.measurementId,
 };
 
 class Firebase {

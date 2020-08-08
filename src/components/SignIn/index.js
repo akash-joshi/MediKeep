@@ -103,16 +103,16 @@ class SignInGoogleBase extends Component {
           email: socialAuthUser.user.email,
           name: socialAuthUser.user.displayName,
         };
-        await axios
-          .post(`https://essayerbackend.akashj.com/user`, reqObject)
-          .then(r => {
-            console.log(r.data);
-            localStorage.setItem(
-              "userObject",
-              JSON.stringify(r.data),
-            );
-          })
-          .catch(console.error);
+        // await axios
+        //   .post(`https://essayerbackend.akashj.com/user`, reqObject)
+        //   .then(r => {
+        //     console.log(r.data);
+        //     localStorage.setItem(
+        //       "userObject",
+        //       JSON.stringify(r.data),
+        //     );
+        //   })
+        //   .catch(console.error);
 
         // Create a user in your Firebase Realtime Database too
         return this.props.firebase.user(socialAuthUser.user.uid).set({
