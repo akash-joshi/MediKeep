@@ -1,5 +1,8 @@
 const firebaseConfig = require("../../../firebase.config");
 
+import * as firebase from "firebase";
+import "firebase/firestore";
+
 const config = {
   apiKey: firebaseConfig.apiKey,
   authDomain: firebaseConfig.authDomain,
@@ -23,7 +26,7 @@ class Firebase {
     /* Firebase APIs */
 
     this.auth = app.auth();
-    this.db = app.database();
+    this.db = app.firestore();
 
     /* Social Sign In Method Provider */
 
@@ -64,22 +67,25 @@ class Firebase {
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
-  // *** Merge Auth and DB User API *** //
+  // *** Merge Auth and DB Users API *** //
+
+  user = uid => this.db.collection("users").doc(uid)
 
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
+
         this.user(authUser.uid)
-          .once("value")
+          .get()
           .then(snapshot => {
-            const dbUser = snapshot.val();
+            const dbUser = snapshot.data();
 
             // default empty roles
             if (!dbUser.roles) {
               dbUser.roles = {};
             }
 
-            // merge auth and db user
+            // merge auth and db users
             authUser = {
               uid: authUser.uid,
               email: authUser.email,
@@ -94,28 +100,16 @@ class Firebase {
         fallback();
       }
     });
-
-  // *** User API ***
-
-  user = uid => this.db.ref(`users/${uid}`);
-
-  users = () => this.db.ref("users");
-
-  // *** Message API ***
-
-  message = uid => this.db.ref(`messages/${uid}`);
-
-  messages = () => this.db.ref("messages");
 }
 
-let firebase;
+let firebase1;
 
 function getFirebase(app, auth, database) {
-  if (!firebase) {
-    firebase = new Firebase(app, auth, database);
+  if (!firebase1) {
+    firebase1 = new Firebase(app, auth, database);
   }
 
-  return firebase;
+  return firebase1;
 }
 
 export default getFirebase;
