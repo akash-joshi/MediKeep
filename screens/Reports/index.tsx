@@ -1,6 +1,7 @@
 import React from "react";
-
 import { StackScreenProps } from "@react-navigation/stack";
+import { AntDesign } from "@expo/vector-icons";
+
 import { RootStackParamList } from "../../types";
 
 import { View, Text, TouchableOpacity, Button } from "react-native";
@@ -13,12 +14,25 @@ const Home = ({ navigation }: StackScreenProps<RootStackParamList, "Home">) => {
       <View
         style={{
           width: "100%",
-          textAlign: "right",
-          marginRight: "2em",
-          marginTop: "0.5em",
         }}
       >
-        <Text style={{ fontSize: 20 }}>MediKeep</Text>
+        <TouchableOpacity
+          style={{
+            width: 40,
+            height: 40,
+            background: "black",
+            borderRadius: 200,
+            textAlign: "center",
+            alignItems: "center",
+            marginTop: "0.5em",
+            marginLeft: "1em",
+            paddingTop: 9,
+            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+          }}
+          onPress={() => navigation.pop()}
+        >
+          <AntDesign name="arrowleft" size={20} color="white" />
+        </TouchableOpacity>
       </View>
       <View
         style={{
