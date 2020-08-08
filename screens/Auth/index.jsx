@@ -14,33 +14,6 @@ const Auth = ({ navigation }) => {
     // Do other things
   });
 
-  var provider = new firebase.auth.GoogleAuthProvider();
-
-  const myGoogleSignIn = () => {
-    console.log("my google");
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log(user);
-        // ...
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-      });
-  };
-
   const isUserEqual = (googleUser, firebaseUser) => {
     if (firebaseUser) {
       var providerData = firebaseUser.providerData;
@@ -77,28 +50,30 @@ const Auth = ({ navigation }) => {
             .signInAndRetrieveDataWithCredential(credential)
             .then(function (result) {
               console.log("user signed in ");
-              if (result.additionalUserInfo.isNewUser) {
-                firebase
-                  .database()
-                  .ref("/users/" + result.user.uid)
-                  .set({
-                    gmail: result.user.email,
-                    profile_picture: result.additionalUserInfo.profile.picture,
-                    first_name: result.additionalUserInfo.profile.given_name,
-                    last_name: result.additionalUserInfo.profile.family_name,
-                    created_at: Date.now(),
-                  })
-                  .then(function (snapshot) {
-                    // console.log('Snapshot', snapshot);
-                  });
-              } else {
-                firebase
-                  .database()
-                  .ref("/users/" + result.user.uid)
-                  .update({
-                    last_logged_in: Date.now(),
-                  });
-              }
+
+              // To store user info to firebase database
+              // if (result.additionalUserInfo.isNewUser) {
+              //   firebase
+              //     .database()
+              //     .ref("/users/" + result.user.uid)
+              //     .set({
+              //       gmail: result.user.email,
+              //       profile_picture: result.additionalUserInfo.profile.picture,
+              //       first_name: result.additionalUserInfo.profile.given_name,
+              //       last_name: result.additionalUserInfo.profile.family_name,
+              //       created_at: Date.now(),
+              //     })
+              //     .then(function (snapshot) {
+              //       // console.log('Snapshot', snapshot);
+              //     });
+              // } else {
+              //   firebase
+              //     .database()
+              //     .ref("/users/" + result.user.uid)
+              //     .update({
+              //       last_logged_in: Date.now(),
+              //     });
+              // }
             })
             .catch(function (error) {
               // Handle Errors here.
@@ -117,44 +92,16 @@ const Auth = ({ navigation }) => {
   };
 
   const signInWithGoogleAsync = async () => {
-    // console.log("here");
-    // try {
-    //   const result = await Expo.Google.logInAsync({
-    //     androidClientId:
-    //       "858762695063-8u1nmkpkcm54ierem1opbefatjb6qq1t.apps.googleusercontent.com",
-    //     behavior: "web",
-    //     scopes: ["profile", "email"],
-    //   });
-    //   console.log("empty");
-    //   console.log(result);
-
-    //   if (result.type === "success") {
-    //     onSignIn(result);
-    //     console.log("got access");
-    //     return result.accessToken;
-    //   } else {
-    //     console.log("canncelled");
-    //     return { cancelled: true };
-    //   }
-    // } catch (e) {
-    //   console.log("error");
-    //   console.log(e);
-    //   return { error: true };
-    // }
-
-    console.log("new attempt");
     try {
-      const { type, accessToken, user } = await Google.logInAsync({
+      const result = await Google.logInAsync({
         androidClientId:
           "858762695063-8u1nmkpkcm54ierem1opbefatjb6qq1t.apps.googleusercontent.com",
         behavior: "web",
         scopes: ["profile", "email"],
       });
 
-      if (type === "success") {
-        /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
+      if (result.type === "success") {
         onSignIn(result);
-        console.log(user);
       }
     } catch (e) {
       console.log("error");

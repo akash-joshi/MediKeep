@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "android": {
+      "package": "com.diago.medikeep",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

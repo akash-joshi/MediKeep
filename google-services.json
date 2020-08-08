@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "858762695063",
+    "firebase_url": "https://medikeep-fd556.firebaseio.com",
+    "project_id": "medikeep-fd556",
+    "storage_bucket": "medikeep-fd556.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858762695063:android:9377e1414b68f70440f4d2",
+        "android_client_info": {
+          "package_name": "com.diago.medikeep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858762695063-tltit3uh2trqqc9ccthd0bnujjai51bm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.diago.medikeep",
+            "certificate_hash": "0dd2ebfa378dedd590c5b7df9b21e1e01a7187a6"
+          }
+        },
+        {
+          "client_id": "858762695063-fobn6i7gdpftl009d7982pbtohimlihp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQTWq-xdiefs5dszMWX8a-Mv2w78kW4iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858762695063-fobn6i7gdpftl009d7982pbtohimlihp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
