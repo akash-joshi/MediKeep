@@ -4,6 +4,7 @@ import styled from "styled-components";
 import getFirebase, { FirebaseContext } from "./Firebase";
 import withAuthentication from "./Session/withAuthentication";
 import { useStaticQuery, graphql } from "gatsby";
+import "semantic-ui-css/semantic.min.css";
 
 import * as app from "firebase";
 import "firebase/firestore";
@@ -12,7 +13,6 @@ import Root from "./Root";
 
 import Header from "./header";
 import "./layout.css";
-import "semantic-ui-css/semantic.min.css";
 
 const Main = styled.div`
   max-width: 1200px;
