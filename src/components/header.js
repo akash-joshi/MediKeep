@@ -9,14 +9,16 @@ import SignOutButton from "./SignOut";
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `white`,
+      background: `#C4C4C4`,
       padding: "0.5em",
       color: "#06B39B",
+      border: "2px solid #C4C4C4",
+      borderRadius: "0 0 25px 25px",
     }}
   >
     <div
       style={{
-        margin: `0 auto`,
+        margin: `0 auto 0.5em auto`,
         padding: `0.5em 2em`,
         display: "flex",
         justifyContent: "space-between",
@@ -28,11 +30,11 @@ const Header = ({ siteTitle }) => (
           margin: 0,
           fontSize: "1.3em",
           fontWeight: 600,
-          paddingBottom: "0.1em",
+          paddingBottom: "0.2em",
         }}
       >
         <AuthUserContext.Consumer>
-          {(authUser) =>
+          {authUser =>
             authUser ? (
               <Link
                 to="/home
@@ -67,7 +69,7 @@ const Header = ({ siteTitle }) => (
         }}
       >
         <AuthUserContext.Consumer>
-          {(authUser) =>
+          {authUser =>
             authUser ? (
               <>
                 <Link
