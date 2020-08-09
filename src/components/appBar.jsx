@@ -9,7 +9,8 @@ const appBar = ({ url, title }) => {
       className="valign-wrapper"
       style={{
         fontSize: 20,
-        marginTop: "0.5em",
+        margin: "0.5em 0",
+        marginTop: "0em"
       }}
     >
       <div
