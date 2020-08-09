@@ -13,6 +13,7 @@ import Root from "./Root";
 
 import Header from "./header";
 import "./layout.css";
+import FAB from "../images/FAB/icon.svg";
 
 const Main = styled.div`
   max-width: 1200px;
@@ -62,7 +63,11 @@ const AppWithAuthentication = withAuthentication(function({
 
   return (
     <section
-      style={{ minHeight: "100vh", background: "rgb(255, 255, 255)" }}
+      style={{
+        minHeight: "100vh",
+        background: "rgb(255, 255, 255)",
+        position: "relative",
+      }}
     >
       {/* <Navigation /> */}
       <Root seo={seo} />
@@ -83,6 +88,20 @@ const AppWithAuthentication = withAuthentication(function({
             Akash N.
           </a>
         </footer> */}
+        <div
+          onClick={() => navigate("/addreport")}
+          style={{
+            position: "absolute",
+            textAlign: "center",
+            borderRadius: "50%",
+            padding: "1.1em",
+            background: "#333333",
+            bottom: "5%",
+            right: "5%",
+          }}
+        >
+          <img src={FAB} style={{ margin: 0 }} />
+        </div>
       </Main>
     </section>
   );

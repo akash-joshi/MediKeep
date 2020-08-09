@@ -12,38 +12,27 @@ const HomePage = () => {
   return (
     <>
       <div
+        className="valign-wrapper"
         style={{
           fontSize: 20,
           marginTop: "0.5em",
         }}
       >
-        <Icon
-          onClick={() => navigate("/")}
-          fitted
-          name="arrow left"
-        />
-        <span style={{ marginLeft: "1em" }}>Reports</span>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          verticalAlign: "middle",
-          minHeight: "80vh",
-        }}
-      >
         <div
           style={{
-            margin: "auto",
-            width: "100%",
-            textAlign: "center",
+            borderRadius: "50%",
+            padding: "0.5em",
+            background: "#333333",
+            color: "#fff",
           }}
         >
           <Icon
-            onClick={() => navigate("/addreport")}
+            onClick={() => navigate("/")}
             fitted
-            name="plus"
+            name="arrow left"
           />
         </div>
+        <span style={{ marginLeft: "1em" }}>Reports</span>
       </div>
     </>
   );
