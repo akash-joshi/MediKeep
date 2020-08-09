@@ -62,7 +62,11 @@ const AppWithAuthentication = withAuthentication(function({
 
   return (
     <section
-      style={{ minHeight: "100vh", background: "rgb(255, 255, 255)" }}
+      style={{
+        minHeight: "100vh",
+        background: "rgb(255, 255, 255)",
+        position: "relative",
+      }}
     >
       {/* <Navigation /> */}
       <Root seo={seo} />
