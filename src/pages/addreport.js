@@ -12,8 +12,8 @@ import FileUploader from "../components/AddReport/FileUploader";
 import File from "../components/AddReport/File";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "../components/appBar";
-import { useForm } from "react-hook-form";
-import { TextField } from "@material-ui/core";
+import { useForm, Controller } from "react-hook-form";
+import { TextField, Button } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import tags from "../components/tag-data.json";
 
@@ -28,10 +28,20 @@ const Row = styled.div`
 
 const useStyles = makeStyles(theme => ({
   root: {
-    "& .MuiTextField-root": {
-      focus: {
-        border: 0,
-      },
+    "& .MuiButton-root": {
+      color: "white",
+      width: "100%",
+      bottom: "0%",
+      position: "absolute",
+      backgroundColor: "black",
+      fontWeight: "bold",
+      textAlign: "center",
+      border: "1px solid black",
+      padding: "0.8em",
+    },
+    "& .MuiButton-root:active": {
+      backgroundColor: "white",
+      color: "black",
     },
   },
 }));
@@ -44,9 +54,9 @@ const HomePageBase = () => {
 
   console.log(files);
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
+  console.error(errors);
   return (
     <>
       <AppBar title="Add A Report" url="/reports" />
@@ -55,8 +65,9 @@ const HomePageBase = () => {
         onSubmit={handleSubmit(onSubmit)}
         style={{
           verticalAlign: "middle",
-          minHeight: "80vh",
+          minHeight: "90vh",
           marginTop: "1em",
+          position: "relative",
         }}
       >
         <Row>
@@ -64,7 +75,7 @@ const HomePageBase = () => {
             label="Title"
             style={{ width: "100%" }}
             name="title"
-            inputRef={register}
+            inputRef={register({ required: true })}
           />
           {/* <b>Report Title</b>
           <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
@@ -123,24 +134,39 @@ const HomePageBase = () => {
           </div>
         </Row>
         <Row>
-          <Autocomplete
-            multiple
-            options={tags}
-            getOptionLabel={option => option}
-            id="tags-standard"
-            renderInput={params => (
-              <TextField
-                {...params}
-                variant="standard"
-                label="Multiple values"
-                placeholder="Favorites"
-                name="tags"
-                inputRef={register}
+          <Controller
+            as={
+              <Autocomplete
+                multiple
+                options={tags}
+                getOptionLabel={option => option}
+                id="tags-standard"
+                renderInput={params => (
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Multiple values"
+                    placeholder="Favorites"
+                  />
+                )}
               />
-            )}
+            }
+            name="tags"
+            control={control}
+            defaultValue={[]}
+            rules={{
+              validate: value => {
+                return !!value;
+              },
+              required: true,
+            }}
+            onChange={([, data]) => data}
           />
         </Row>
-        <input type="submit" />
+
+        <Button variant="outlined" className={classes.root}>
+          Save
+        </Button>
       </form>
     </>
   );
