@@ -2,6 +2,7 @@ import React from "react";
 import { navigate } from "gatsby";
 
 import styled from "styled-components";
+import { indexOf } from "core-js/fn/array";
 
 const Wrapper = styled.div`
   padding: 0.5em;
@@ -43,7 +44,7 @@ const MediaPreview = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
-const ReportCards = ({ category, info, url }) => {
+const ReportCards = ({ category, items, url }) => {
   return (
     <>
       <Wrapper>
@@ -57,32 +58,36 @@ const ReportCards = ({ category, info, url }) => {
             View All
           </ViewAll>
         </div>
-        <PreviewCard>
-          <div style={{ fontSize: 16, fontWeight: 600 }}>
-            {info.title}
-          </div>
-          <div
-            style={{
-              fontSize: 12,
-              fontWeight: 400,
-            }}
-          >
-            {info.description}
-          </div>
-          <MediaPreview>
-            {info.media.map((link, index) => (
-              <img
-                src={link}
-                key={index}
-                style={{
-                  width: 85,
-                  height: 65,
-                }}
-              />
-            ))}
-          </MediaPreview>
-          <div style={{ textAlign: "right" }}>{info.created_at}</div>
-        </PreviewCard>
+        {items.slice(0, 2).map((info, index) => (
+          <PreviewCard key={index}>
+            <div style={{ fontSize: 16, fontWeight: 600 }}>
+              {info.title}
+            </div>
+            <div
+              style={{
+                fontSize: 12,
+                fontWeight: 400,
+              }}
+            >
+              {info.description}
+            </div>
+            <MediaPreview>
+              {info.media.map((link, index) => (
+                <img
+                  src={link}
+                  key={index}
+                  style={{
+                    width: 85,
+                    height: 65,
+                  }}
+                />
+              ))}
+            </MediaPreview>
+            <div style={{ textAlign: "right" }}>
+              {info.created_at}
+            </div>
+          </PreviewCard>
+        ))}
       </Wrapper>
     </>
   );

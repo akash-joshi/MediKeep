@@ -8,7 +8,7 @@ const FAB = () => {
       <div
         onClick={() => navigate("/addreport")}
         style={{
-          position: "absolute",
+          position: "fixed",
           textAlign: "center",
           borderRadius: "50%",
           padding: "15px",

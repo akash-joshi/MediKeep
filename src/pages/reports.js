@@ -84,23 +84,19 @@ const HomePage = () => {
       {Reports.map((report, index) => (
         <div key={index}>
           {filter == "Filter" ? (
-            report.items.map((item, index) => (
-              <ReportCards
-                category={report.category}
-                info={item}
-                key={index}
-                url="/"
-              />
-            ))
+            <ReportCards
+              category={report.category}
+              items={report.items}
+              key={index}
+              url="/"
+            />
           ) : report.category == filter ? (
-            report.items.map((item, index) => (
-              <ReportCards
-                category={report.category}
-                info={item}
-                key={index}
-                url="/"
-              />
-            ))
+            <ReportCards
+              category={report.category}
+              items={report.items}
+              key={index}
+              url="/"
+            />
           ) : (
             <></>
           )}
