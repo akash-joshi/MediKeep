@@ -3,13 +3,13 @@ import { navigate } from "gatsby";
 
 import { Icon } from "semantic-ui-react";
 
-const appBar = ({ url, title, show }) => {
+const appBar = ({ url, title, show, background }) => {
   return (
     <div
       style={{
         padding: 0,
         margin: 0,
-        background: "rgb(234 241 255)",
+        background: background ? background : "rgb(234 241 255)",
       }}
     >
       <div
