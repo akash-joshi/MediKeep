@@ -3,19 +3,25 @@ import { navigate } from "gatsby";
 
 import { Icon } from "semantic-ui-react";
 
-const appBar = ({ url, title }) => {
+const appBar = ({ url, title, show }) => {
   return (
     <div
       className="valign-wrapper"
       style={{
-        fontSize: 20,
-        marginTop: "0.5em",
+        fontSize: 24,
+        margin: show ? "0" : "0.5em 0 0 0",
+        background: show
+          ? "linear-gradient(180deg, #B378F0 0%, #FDB99B 100%)"
+          : "#ffffff",
+        padding: show ? "15px 0px 25px 20px" : "10px 0px 0px 15px",
+        borderRadius: show ? "0 0 25px 25px" : "0 0 0 0",
+        fontWeight: 600,
       }}
     >
       <div
         style={{
           borderRadius: "50%",
-          padding: "0.5em",
+          padding: "0.3em 0.5em",
           background: "#333333",
           color: "#fff",
           height: 40,
@@ -26,6 +32,7 @@ const appBar = ({ url, title }) => {
           onClick={() => navigate(url)}
           fitted
           name="arrow left"
+          size="small"
         />
       </div>
       <span style={{ marginLeft: "1em" }}>{title}</span>

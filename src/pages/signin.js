@@ -25,19 +25,30 @@ const SignInPage = () => {
   }
 
   return (
-    <CardContainer style={{ padding: 0 }}>
+    <CardContainer style={{ padding: 0, minHeight: "96vh" }}>
       <div
         style={{
           padding: "0.75em 1em",
-          fontWeight: 600,
+
           fontSize: 16,
           display: "flex",
+          justifyContent: "space-between",
         }}
       >
-        Sign In
+        <span style={{ fontWeight: 600 }}>Sign In</span>
+        <span style={{ fontSize: 20 }}>MediKeep</span>
       </div>
 
-      <div style={{ padding: "1em", borderTop: "2px solid #EFF2F8" }}>
+      <div
+        style={{
+          padding: "1em",
+          borderTop: "2px solid #EFF2F8",
+          height: "90%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         {/* <SignInForm /> */}
 
         <SignInGoogle />

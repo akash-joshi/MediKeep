@@ -1,5 +1,5 @@
 {
-  "name": "essayer-ui",
+  "name": "Medikeep",
   "description": "Gatsby hello world starter",
   "scripts": {
     "dev": "gatsby develop",
@@ -10,6 +10,8 @@
     "lint": "eslint --ext js,jsx,tsx . --fix --quiet"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "babel-plugin-styled-components": "1.10.6",
     "core-js": "^2.6.5",
     "firebase": "^7.14.1",
@@ -25,6 +27,8 @@
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-sharp": "^2.4.3",
     "husky": "^4.2.5",
+    "mime-types": "^2.1.27",
+    "moment": "^2.27.0",
     "react": "^16.8.6",
     "react-countdown": "^2.2.1",
     "react-dom": "^16.8.6",

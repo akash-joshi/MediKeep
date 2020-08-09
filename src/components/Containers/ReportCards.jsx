@@ -2,6 +2,9 @@ import React from "react";
 import { navigate } from "gatsby";
 
 import styled from "styled-components";
+import { indexOf } from "core-js/fn/array";
+
+import PreviewCard from "./PreviewCard";
 
 const Wrapper = styled.div`
   padding: 0.5em;
@@ -10,6 +13,7 @@ const Wrapper = styled.div`
 const Title = styled.div`
   font-size: 24px;
   line-height: 28px;
+  font-weight: 500;
 
   color: #000000;
 `;
@@ -23,26 +27,12 @@ const ViewAll = styled.div`
   color: #3354ff;
 `;
 
-const PreviewCard = styled.div`
-  background: #ffffff;
-  box-shadow: 0px 8px 16px #f0f4f7;
-  border-radius: 8px;
-  padding: 1em;
-  min-height: 10vh;
-  margin-bottom: 1.5em;
-  position: relative;
-  transition: box-shadow 0.3s ease-in-out;
-  @media only screen and (max-width: 1000px) {
-    padding: 0.5em 1em;
-  }
-`;
-
-const ReportCards = ({ title, url, preview }) => {
+const ReportCards = ({ category, items, url }) => {
   return (
     <>
       <Wrapper>
         <div className="valign-wrapper">
-          <Title>{title}</Title>
+          <Title>{category}</Title>
           <ViewAll
             onClick={() => {
               navigate(url);
@@ -51,7 +41,9 @@ const ReportCards = ({ title, url, preview }) => {
             View All
           </ViewAll>
         </div>
-        <PreviewCard />
+        {items.slice(0, 1).map((info, index) => (
+          <PreviewCard key={index} info={info} show={false} />
+        ))}
       </Wrapper>
     </>
   );
