@@ -3,9 +3,14 @@ import { Link, navigate } from "gatsby";
 
 import { Icon, Input } from "semantic-ui-react";
 import TextareaAutosize from "react-textarea-autosize";
+import styled from "styled-components";
 
 import Layout from "../components/layout";
 import Loader from "../components/Loader";
+
+const Row = styled.div`
+    margin-bottom: 1em;
+`
 
 const HomePage = () => {
   return (
@@ -21,7 +26,7 @@ const HomePage = () => {
           fitted
           name="arrow left"
         />
-        <span style={{ marginLeft: "1em" }}>Reports</span>
+        <span style={{ marginLeft: "1em" }}>Add a Report</span>
       </div>
       <div
         style={{
@@ -30,12 +35,12 @@ const HomePage = () => {
           marginTop: "1em",
         }}
       >
-        <div style={{ marginBottom: "1em" }}>
+        <Row>
           <b>Report Title</b>
           <Input style={{ width: "100%" }} />
-        </div>
+        </Row>
 
-        <div style={{ marginBottom: "1em" }}>
+        <Row>
           <b>Report Description</b>
           <TextareaAutosize
             minRows={5}
@@ -46,7 +51,11 @@ const HomePage = () => {
             }}
             id="myTextArea"
           />
-        </div>
+        </Row>
+
+        <Row>
+            <b></b>
+        </Row>
       </div>
     </>
   );
