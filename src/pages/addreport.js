@@ -9,8 +9,8 @@ import Layout from "../components/layout";
 import Loader from "../components/Loader";
 
 const Row = styled.div`
-    margin-bottom: 1em;
-`
+  margin-bottom: 1em;
+`;
 
 const HomePage = () => {
   return (
@@ -54,7 +54,18 @@ const HomePage = () => {
         </Row>
 
         <Row>
-            <b></b>
+          <b>Add Reports (PDFs/Images)</b>
+
+          <div
+            style={{
+              width: "50%",
+              height: "calc(30vw * 2)",
+              boxShadow: "2px 5px 4px rgba(0, 0, 0, 0.25)",
+              textAlign: "center",
+            }}
+          >
+            <img src="/AddReport/plus.svg" />
+          </div>
         </Row>
       </div>
     </>
