@@ -47,7 +47,12 @@ const ReportCategory = () => {
       <div>
         {items.length > 0 &&
           items.map((info, index) => (
-            <PreviewCard key={index} info={info} show={true} />
+            <PreviewCard
+              key={index}
+              info={info}
+              show={true}
+              category={category}
+            />
           ))}
       </div>
     </>

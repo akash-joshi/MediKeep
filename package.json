@@ -28,6 +28,7 @@
     "gatsby-transformer-sharp": "^2.4.3",
     "husky": "^4.2.5",
     "mime-types": "^2.1.27",
+    "moment": "^2.27.0",
     "react": "^16.8.6",
     "react-countdown": "^2.2.1",
     "react-dom": "^16.8.6",

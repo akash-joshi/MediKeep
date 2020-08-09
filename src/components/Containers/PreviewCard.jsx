@@ -1,5 +1,6 @@
 import React from "react";
 
+import moment from "moment";
 import { navigate } from "gatsby";
 import styled from "styled-components";
 
@@ -7,10 +8,11 @@ const Card = styled.div`
   background: #f5f5f5;
   border-radius: 8px;
   padding: 1em;
-
+  box-shadow: 0px 8px 16px #f0f4f7;
   min-height: 15vh;
-  margin: 1em 0;
+  margin: 1.5em 0;
   position: relative;
+  transition: box-shadow 0.3s ease-in-out;
   @media only screen and (max-width: 1000px) {
     padding: 0.5em 1em;
   }
@@ -32,29 +34,31 @@ const ViewDetails = styled.div`
   color: #3354ff;
 `;
 
-const PreviewCard = ({ info, show }) => {
+const PreviewCard = ({ info, show, category }) => {
   return (
     <Card>
       <div
         className="valign-wrapper"
-        style={{ fontSize: 16, fontWeight: 600 }}
+        style={{ fontSize: 18, fontWeight: 600 }}
       >
         {info.title}
         {show ? (
           <ViewDetails
             onClick={() => {
-              navigate(`/reports/view?id=${info.id}`);
+              navigate(
+                `/reports/view?id=${info.id}&title=${info.title}&category=${category}`,
+              );
             }}
           >
             View Details
           </ViewDetails>
         ) : (
-          false
+          <></>
         )}
       </div>
       <div
         style={{
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 400,
         }}
       >
@@ -72,7 +76,9 @@ const PreviewCard = ({ info, show }) => {
           />
         ))}
       </MediaPreview>
-      <div style={{ textAlign: "right" }}>{info.created_at}</div>
+      <div style={{ textAlign: "right" }}>
+        {moment(info.created_at).format("DD MMM YYYY, hh:mm a")}
+      </div>
     </Card>
   );
 };

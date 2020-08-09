@@ -17,7 +17,7 @@ import ReportCards from "../../components/Containers/ReportCards";
 const FilterGrid = styled.div`
   margin: 0.2em 0;
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 `;
 
@@ -47,7 +47,8 @@ const HomePage = () => {
   return (
     <>
       <FilterGrid>
-        <Dropdown
+        <div></div>
+        {/* <Dropdown
           text={sort}
           icon="filter"
           floating
@@ -67,7 +68,7 @@ const HomePage = () => {
           onChange={(e, { value }) => {
             setSort(value);
           }}
-        />
+        /> */}
         <Dropdown
           text={filter}
           icon="filter"
