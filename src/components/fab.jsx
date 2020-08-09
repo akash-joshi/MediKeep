@@ -2,6 +2,9 @@ import React from "react";
 import { navigate } from "gatsby";
 import Icon from "../images/FAB/icon.svg";
 
+import { Fab } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+
 const FAB = () => {
   return (
     <>
@@ -12,17 +15,19 @@ const FAB = () => {
           textAlign: "center",
           borderRadius: "50%",
           padding: "15px",
-          background: "#333333",
           bottom: "5%",
-          right: "5%",
+          right: "10%",
           width: 55,
           height: 55,
         }}
       >
-        <img
-          src={Icon}
-          style={{ margin: 0, height: 25, width: 25 }}
-        />
+        <Fab
+          style={{ background: "#333", color: "white" }}
+          color="white"
+          aria-label="add"
+        >
+          <AddIcon color="white" />
+        </Fab>
       </div>
     </>
   );
