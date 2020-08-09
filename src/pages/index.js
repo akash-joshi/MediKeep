@@ -10,15 +10,19 @@ import ClickableGradientCard from "../components/Containers/ClickableGradientCar
 import Layout from "../components/layout";
 import Loader from "../components/Loader";
 
+import {
+  withAuthorization,
+  withEmailVerification,
+} from "../components/Session";
 
-const HomePage = () => {
+const HomePageBase = () => {
   return (
     <>
       <div
         style={{
           fontSize: 20,
           marginTop: "0.5em",
-          textAlign: "right"
+          textAlign: "right",
         }}
       >
         MediKeep
@@ -48,9 +52,16 @@ const HomePage = () => {
   );
 };
 
+const condition = authUser => !!authUser;
+
 const seo = {
-  title: "Home",
+  title: "Creating a Topic",
 };
+
+const HomePage = compose(
+  withEmailVerification,
+  withAuthorization(condition),
+)(HomePageBase);
 
 export default function Home() {
   return (

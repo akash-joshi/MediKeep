@@ -27,6 +27,8 @@ class Firebase {
 
     this.auth = app.auth();
     this.db = app.firestore();
+    this.storageRef = app.storage().ref();
+    this.appRef = app;
 
     /* Social Sign In Method Provider */
 
@@ -69,12 +71,11 @@ class Firebase {
 
   // *** Merge Auth and DB Users API *** //
 
-  user = uid => this.db.collection("users").doc(uid)
+  user = uid => this.db.collection("users").doc(uid);
 
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
-
         this.user(authUser.uid)
           .get()
           .then(snapshot => {
