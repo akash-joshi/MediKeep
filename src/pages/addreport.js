@@ -10,9 +10,12 @@ import { AuthUserContext } from "../components/Session";
 import Layout from "../components/layout";
 import FileUploader from "../components/AddReport/FileUploader";
 import File from "../components/AddReport/File";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "../components/appBar";
-import { useForm } from 'react-hook-form';
-import {TextField} from '@material-ui/core'
+import { useForm } from "react-hook-form";
+import { TextField } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import tags from "../components/tag-data.json";
 
 import {
   withAuthorization,
@@ -23,7 +26,18 @@ const Row = styled.div`
   margin-bottom: 1em;
 `;
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    "& .MuiTextField-root": {
+      focus: {
+        border: 0,
+      },
+    },
+  },
+}));
+
 const HomePageBase = () => {
+  const classes = useStyles();
   const authUser = useContext(AuthUserContext);
 
   const [files, setFiles] = useLocalStorage("userfiles", []);
@@ -37,7 +51,8 @@ const HomePageBase = () => {
     <>
       <AppBar title="Add A Report" url="/reports" />
       <form
-      onSubmit={handleSubmit(onSubmit)}
+        className={classes.root}
+        onSubmit={handleSubmit(onSubmit)}
         style={{
           verticalAlign: "middle",
           minHeight: "80vh",
@@ -45,11 +60,16 @@ const HomePageBase = () => {
         }}
       >
         <Row>
-        <TextField id="standard-basic" label="Title" name="title" inputRef={register}/>
+          <TextField
+            label="Title"
+            style={{ width: "100%" }}
+            name="title"
+            inputRef={register}
+          />
           {/* <b>Report Title</b>
           <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
         </Row>
- 
+
         <Row>
           {/* <b>Report Description</b>
           <TextareaAutosize
@@ -61,14 +81,13 @@ const HomePageBase = () => {
             }}
             id="myTextArea"
           /> */}
-            <TextField
-          id="standard-multiline-flexible"
-          label="Description"
-          multiline
-          name="description"
-          inputRef={register}
-  
-        />
+          <TextField
+            style={{ width: "100%" }}
+            label="Description"
+            multiline
+            name="description"
+            inputRef={register}
+          />
         </Row>
 
         <Row>
@@ -101,8 +120,26 @@ const HomePageBase = () => {
                 src="/AddReport/plus.svg"
               />
             </div> */}
-           </div>
-        </Row> 
+          </div>
+        </Row>
+        <Row>
+          <Autocomplete
+            multiple
+            options={tags}
+            getOptionLabel={option => option}
+            id="tags-standard"
+            renderInput={params => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Multiple values"
+                placeholder="Favorites"
+                name="tags"
+                inputRef={register}
+              />
+            )}
+          />
+        </Row>
         <input type="submit" />
       </form>
     </>
