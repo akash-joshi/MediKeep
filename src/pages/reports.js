@@ -6,36 +6,12 @@ import { Icon } from "semantic-ui-react";
 import { AuthUserContext } from "../components/Session";
 import ClickableGradientCard from "../components/Containers/ClickableGradientCard";
 import Layout from "../components/layout";
+import FAB from "../components/fab";
+import AppBar from "../components/appBar";
 import Loader from "../components/Loader";
 
 const HomePage = () => {
-  return (
-    <>
-      <div
-        className="valign-wrapper"
-        style={{
-          fontSize: 20,
-          marginTop: "0.5em",
-        }}
-      >
-        <div
-          style={{
-            borderRadius: "50%",
-            padding: "0.5em",
-            background: "#333333",
-            color: "#fff",
-          }}
-        >
-          <Icon
-            onClick={() => navigate("/")}
-            fitted
-            name="arrow left"
-          />
-        </div>
-        <span style={{ marginLeft: "1em" }}>Reports</span>
-      </div>
-    </>
-  );
+  return <></>;
 };
 
 const seo = {
@@ -46,7 +22,9 @@ export default function Home() {
   return (
     <div style={{ minHeight: "100vh" }}>
       <Layout seo={seo}>
+        <AppBar title="Reports" url="/" />
         <HomePage />
+        <FAB />
       </Layout>
     </div>
   );
