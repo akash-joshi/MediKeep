@@ -11,9 +11,9 @@ const appBar = ({ url, title, show }) => {
         fontSize: 24,
         margin: show ? "0" : "0.5em 0 0 0",
         background: show
-          ? "linear-gradient(180deg, #B378F0 0%, #FDB99B 100%)"
+          ? "#294086"
           : "#ffffff",
-        padding: show ? "15px 0px 25px 20px" : "10px 0px 0px 15px",
+        padding: show ? "15px 0px 15px 20px" : "10px 0px 0px 15px",
         borderRadius: show ? "0 0 25px 25px" : "0 0 0 0",
         fontWeight: 600,
       }}
@@ -22,8 +22,8 @@ const appBar = ({ url, title, show }) => {
         style={{
           borderRadius: "50%",
           padding: "0.3em 0.5em",
-          background: "#333333",
-          color: "#fff",
+          background: "white",
+          color: "#294086",
           height: 40,
           width: 40,
         }}
@@ -35,7 +35,7 @@ const appBar = ({ url, title, show }) => {
           size="small"
         />
       </div>
-      <span style={{ marginLeft: "1em" }}>{title}</span>
+      <span style={{ marginLeft: "1em", color: "white" }}>{title}</span>
     </div>
   );
 };

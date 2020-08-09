@@ -14,7 +14,6 @@ const Title = styled.div`
   font-size: 24px;
   line-height: 28px;
   font-weight: 500;
-
   color: #000000;
 `;
 
@@ -22,9 +21,7 @@ const ViewAll = styled.div`
   margin-left: auto;
   font-size: 18px;
   line-height: 21px;
-  text-decoration: underline;
-
-  color: #3354ff;
+  color: #1a68b9;
 `;
 
 const ReportCards = ({ category, items, url }) => {

@@ -31,8 +31,6 @@ const useStyles = makeStyles(theme => ({
     "& .MuiButton-root": {
       color: "white",
       width: "100%",
-      bottom: "0%",
-      position: "absolute",
       backgroundColor: "black",
       fontWeight: "bold",
       textAlign: "center",
@@ -42,6 +40,15 @@ const useStyles = makeStyles(theme => ({
     "& .MuiButton-root:active": {
       backgroundColor: "white",
       color: "black",
+    },
+    "& label.Mui-focused": {
+      color: "black",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "black",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "black",
     },
   },
 }));
@@ -59,7 +66,6 @@ const HomePageBase = () => {
   console.error(errors);
   return (
     <>
-      <AppBar title="Add A Report" url="/reports" />
       <form
         className={classes.root}
         onSubmit={handleSubmit(onSubmit)}
@@ -76,6 +82,7 @@ const HomePageBase = () => {
             style={{ width: "100%" }}
             name="title"
             inputRef={register({ required: true })}
+            color="black"
           />
           {/* <b>Report Title</b>
           <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
@@ -97,6 +104,7 @@ const HomePageBase = () => {
             label="Description"
             multiline
             name="description"
+            color="black"
             inputRef={register}
           />
         </Row>
@@ -114,23 +122,6 @@ const HomePageBase = () => {
               <File key={index} fileURL={fileURL} />
             ))}
             <FileUploader uid={authUser} setFiles={setFiles} />
-            {/* <div
-              style={{
-                width: "90%",
-                height: "calc(30vw * 2)",
-                boxShadow: "2px 5px 4px rgba(0, 0, 0, 0.25)",
-                textAlign: "center",
-                marginTop: "1.5em",
-                marginLeft: "auto",
-                marginRight: "auto",
-                paddingTop: "50%",
-              }}
-            >
-              <img
-                style={{ height: 40, width: 40 }}
-                src="/AddReport/plus.svg"
-              />
-            </div> */}
           </div>
         </Row>
         <Row>
@@ -145,8 +136,7 @@ const HomePageBase = () => {
                   <TextField
                     {...params}
                     variant="standard"
-                    label="Multiple values"
-                    placeholder="Favorites"
+                    label="Tests Performed"
                   />
                 )}
               />
@@ -164,7 +154,11 @@ const HomePageBase = () => {
           />
         </Row>
 
-        <Button variant="outlined" className={classes.root}>
+        <Button
+          style={{ marginTop: "1em" }}
+          variant="outlined"
+          className={classes.root}
+        >
           Save
         </Button>
       </form>
@@ -186,6 +180,7 @@ const HomePage = compose(
 export default function Home() {
   return (
     <div style={{ minHeight: "100vh" }}>
+      <AppBar title="Add A Report" url="/reports" />
       <Layout seo={seo}>
         <HomePage />
       </Layout>

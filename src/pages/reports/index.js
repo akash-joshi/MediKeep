@@ -114,7 +114,7 @@ const seo = {
 export default function Home() {
   return (
     <div style={{ minHeight: "100vh" }}>
-      <AppBar title="Reports" url="/" />
+      <AppBar title="Reports" url="/" show={true} />
       <Layout seo={seo}>
         <HomePage />
         <FAB />

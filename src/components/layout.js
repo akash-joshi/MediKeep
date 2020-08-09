@@ -64,7 +64,7 @@ const AppWithAuthentication = withAuthentication(function({
     <section
       style={{
         minHeight: "100vh",
-        background: "rgb(255, 255, 255)",
+        background: "rgb(234 241 255)",
         position: "relative",
       }}
     >

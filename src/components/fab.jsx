@@ -22,7 +22,7 @@ const FAB = () => {
         }}
       >
         <Fab
-          style={{ background: "#333", color: "white" }}
+          style={{ background: "#294086", color: "white" }}
           color="white"
           aria-label="add"
         >
