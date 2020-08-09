@@ -13,7 +13,7 @@ import File from "../components/AddReport/File";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "../components/appBar";
 import { useForm, Controller } from "react-hook-form";
-import { TextField } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import tags from "../components/tag-data.json";
 
@@ -28,10 +28,20 @@ const Row = styled.div`
 
 const useStyles = makeStyles(theme => ({
   root: {
-    "& .MuiTextField-root": {
-      focus: {
-        border: 0,
-      },
+    "& .MuiButton-root": {
+      color: "white",
+      width: "100%",
+      bottom: "0%",
+      position: "absolute",
+      backgroundColor: "black",
+      fontWeight: "bold",
+      textAlign: "center",
+      border: "1px solid black",
+      padding: "0.8em",
+    },
+    "& .MuiButton-root:active": {
+      backgroundColor: "white",
+      color: "black",
     },
   },
 }));
@@ -55,8 +65,9 @@ const HomePageBase = () => {
         onSubmit={handleSubmit(onSubmit)}
         style={{
           verticalAlign: "middle",
-          minHeight: "80vh",
+          minHeight: "90vh",
           marginTop: "1em",
+          position: "relative",
         }}
       >
         <Row>
@@ -152,7 +163,10 @@ const HomePageBase = () => {
             onChange={([, data]) => data}
           />
         </Row>
-        <input type="submit" />
+
+        <Button variant="outlined" className={classes.root}>
+          Save
+        </Button>
       </form>
     </>
   );
