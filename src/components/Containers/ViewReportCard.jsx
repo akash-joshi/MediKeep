@@ -8,11 +8,16 @@ import styled from "styled-components";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
+import CardContainer from "./CardContainer";
+
 const MediaPreview = styled.div`
   margin: 0.5em 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  overflow: auto;
   column-gap: 2em;
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
 `;
 
 const ViewDetails = styled.div`
@@ -25,27 +30,43 @@ const ViewDetails = styled.div`
   color: #3354ff;
 `;
 
+const Text = styled.div`
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 2px solid rgb(239, 242, 248);
+`;
+
+const SubText = styled.div`
+  padding: 0.5em 1em;
+  font-size: 16px;
+`;
+
 const ViewReportCard = ({ info }) => {
   return (
     <>
-      <div
-        style={{
-          fontSize: 16,
-          fontWeight: 500,
-        }}
-      >
-        Description : {info.description}
-        <br />
-        Submitted on :{" "}
-        {moment(info.created_at).format("DD MMM YYYY, hh:mm a")}
-      </div>
       <MediaPreview>
         {info.media.map((link, index) => (
-          <Zoom>
-            <img src={link} key={index} />
-          </Zoom>
+          <div style={{ flexShrink: "0" }}>
+            <Zoom>
+              <img
+                src={link}
+                key={index}
+                style={{ width: "auto", height: "250px" }}
+              />
+            </Zoom>
+          </div>
         ))}
       </MediaPreview>
+      <CardContainer style={{ marginTop: "1em", padding: 0 }}>
+        <Text>Description :</Text>
+        <div style={{}}></div>
+        <SubText>{info.description}</SubText>
+      </CardContainer>
+      <div style={{ textAlign: "center", fontWeight: "600" }}>
+        {moment(info.created_at).format("DD-MM-YYYY")}
+      </div>
     </>
   );
 };
