@@ -24,7 +24,7 @@ const ViewAll = styled.div`
 `;
 
 const PreviewCard = styled.div`
-  background: #ffffff;
+  background: #f5f5f5;
   box-shadow: 0px 8px 16px #f0f4f7;
   border-radius: 8px;
   padding: 1em;
