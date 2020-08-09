@@ -12,7 +12,7 @@ import FileUploader from "../components/AddReport/FileUploader";
 import File from "../components/AddReport/File";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "../components/appBar";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import tags from "../components/tag-data.json";
@@ -44,9 +44,9 @@ const HomePageBase = () => {
 
   console.log(files);
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
+  console.error(errors);
   return (
     <>
       <AppBar title="Add A Report" url="/reports" />
@@ -64,7 +64,7 @@ const HomePageBase = () => {
             label="Title"
             style={{ width: "100%" }}
             name="title"
-            inputRef={register}
+            inputRef={register({ required: true })}
           />
           {/* <b>Report Title</b>
           <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
@@ -123,21 +123,33 @@ const HomePageBase = () => {
           </div>
         </Row>
         <Row>
-          <Autocomplete
-            multiple
-            options={tags}
-            getOptionLabel={option => option}
-            id="tags-standard"
-            renderInput={params => (
-              <TextField
-                {...params}
-                variant="standard"
-                label="Multiple values"
-                placeholder="Favorites"
-                name="tags"
-                inputRef={register}
+          <Controller
+            as={
+              <Autocomplete
+                multiple
+                options={tags}
+                getOptionLabel={option => option}
+                id="tags-standard"
+                renderInput={params => (
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Multiple values"
+                    placeholder="Favorites"
+                  />
+                )}
               />
-            )}
+            }
+            name="tags"
+            control={control}
+            defaultValue={[]}
+            rules={{
+              validate: value => {
+                return !!value;
+              },
+              required: true,
+            }}
+            onChange={([, data]) => data}
           />
         </Row>
         <input type="submit" />
