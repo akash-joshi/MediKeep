@@ -183,6 +183,7 @@ export default function Home() {
       <AppBar
         title="Add A Report"
         url="/reports"
+        show={true}
         background={"#fff"}
       />
       <Layout seo={seo} background={"#fff"}>
