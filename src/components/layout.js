@@ -66,7 +66,7 @@ const AppWithAuthentication = withAuthentication(function({
     >
       {/* <Navigation /> */}
       <Root seo={seo} />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
       <Main
         style={{
           margin: `0 auto`,

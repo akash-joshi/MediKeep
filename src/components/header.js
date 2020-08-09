@@ -9,11 +9,11 @@ import SignOutButton from "./SignOut";
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `#C4C4C4`,
+      // background: `#C4C4C4`,
       padding: "0.5em",
       color: "#06B39B",
-      border: "2px solid #C4C4C4",
-      borderRadius: "0 0 25px 25px",
+      // border: "2px solid #C4C4C4",
+      // borderRadius: "0 0 25px 25px",
     }}
   >
     <div
@@ -25,80 +25,7 @@ const Header = ({ siteTitle }) => (
         maxWidth: 1200,
       }}
     >
-      <div
-        style={{
-          margin: 0,
-          fontSize: "1.3em",
-          fontWeight: 600,
-          paddingBottom: "0.2em",
-        }}
-      >
-        <AuthUserContext.Consumer>
-          {authUser =>
-            authUser ? (
-              <Link
-                to="/home
-                "
-                style={{
-                  color: `#06B39B`,
-                  textDecoration: `none`,
-                }}
-              >
-                {siteTitle}
-              </Link>
-            ) : (
-              <Link
-                to="/"
-                style={{
-                  color: `#06B39B`,
-                  textDecoration: `none`,
-                }}
-              >
-                {siteTitle}
-              </Link>
-            )
-          }
-        </AuthUserContext.Consumer>
-      </div>
-      <div
-        style={{
-          margin: 0,
-          fontSize: "1em",
-          fontWeight: 600,
-          paddingTop: "0.1em",
-        }}
-      >
-        <AuthUserContext.Consumer>
-          {authUser =>
-            authUser ? (
-              <>
-                <Link
-                  to="/home"
-                  style={{
-                    textDecoration: `none`,
-                    marginRight: "1em",
-                    color: `black`,
-                  }}
-                >
-                  Home
-                </Link>
-                <SignOutButton />
-              </>
-            ) : (
-              <Link
-                to="/signin"
-                style={{
-                  textDecoration: `none`,
-                  marginRight: "1em",
-                  color: `black`,
-                }}
-              >
-                Sign In
-              </Link>
-            )
-          }
-        </AuthUserContext.Consumer>
-      </div>
+      
     </div>
   </header>
 );

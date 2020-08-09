@@ -283,3 +283,7 @@ summary {
   -ms-flex-align: center;
   align-items: center;
 }
+
+textarea:focus {
+  border: 0.1px solid rgba(0,0,0,.3) !important;
+}

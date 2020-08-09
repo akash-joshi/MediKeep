@@ -1,17 +1,18 @@
 import React from "react";
 
+import { navigate } from "gatsby";
+
 const ClickableGradientCard = ({ text, url, background }) => {
   return (
     <div
       onClick={() => {
-        location.href = url;
+        navigate(url);
       }}
       style={{
         display: "flex",
         verticalAlign: "middle",
         background,
         borderRadius: 10,
-        width: "90%",
         textAlign: "center",
         justifyContent: "center",
         height: 112,

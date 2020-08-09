@@ -44,13 +44,6 @@ module.exports = {
         respectDNT: true,
         defer: true,
       },
-    },
-    {
-      resolve: 'gatsby-plugin-crisp-chat',
-      options: {
-        websiteId: '3ff332b2-1b79-445e-9268-ce1e1a1a5859',
-        defer: true,
-      },
     }
   ],
 };
