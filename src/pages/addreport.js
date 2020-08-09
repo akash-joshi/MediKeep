@@ -7,12 +7,18 @@ import styled from "styled-components";
 
 import Layout from "../components/layout";
 import FileUploader from "../components/AddReport/FileUploader";
+import { useForm } from 'react-hook-form';
+import {TextField} from '@material-ui/core'
 
 const Row = styled.div`
   margin-bottom: 1em;
 `;
 
 const HomePage = () => {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => console.log(data);
+  console.log(errors);
+
   return (
     <>
       <div
@@ -29,6 +35,7 @@ const HomePage = () => {
         <span style={{ marginLeft: "1em" }}>Add a Report</span>
       </div>
       <form
+      onSubmit={handleSubmit(onSubmit)}
         style={{
           verticalAlign: "middle",
           minHeight: "80vh",
@@ -36,12 +43,13 @@ const HomePage = () => {
         }}
       >
         <Row>
-          <b>Report Title</b>
-          <Input style={{ width: "100%" }} />
+        <TextField id="standard-basic" label="Title" name="title" inputRef={register}/>
+          {/* <b>Report Title</b>
+          <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
         </Row>
-
+ 
         <Row>
-          <b>Report Description</b>
+          {/* <b>Report Description</b>
           <TextareaAutosize
             minRows={5}
             style={{
@@ -50,7 +58,15 @@ const HomePage = () => {
               border: "0.1px solid rgba(0,0,0,.15)",
             }}
             id="myTextArea"
-          />
+          /> */}
+            <TextField
+          id="standard-multiline-flexible"
+          label="Description"
+          multiline
+          name="description"
+          inputRef={register}
+  
+        />
         </Row>
 
         <Row>
@@ -61,7 +77,7 @@ const HomePage = () => {
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
             }}
-          >
+          > 
             <FileUploader />
             {/* <div
               style={{
@@ -80,8 +96,9 @@ const HomePage = () => {
                 src="/AddReport/plus.svg"
               />
             </div> */}
-          </div>
-        </Row>
+           </div>
+        </Row> 
+        <input type="submit" />
       </form>
     </>
   );
