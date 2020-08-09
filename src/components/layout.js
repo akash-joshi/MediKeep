@@ -49,6 +49,7 @@ class Layout extends Component {
 const AppWithAuthentication = withAuthentication(function({
   children,
   seo,
+  background,
 }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -64,7 +65,7 @@ const AppWithAuthentication = withAuthentication(function({
     <section
       style={{
         minHeight: "100vh",
-        background: "rgb(234 241 255)",
+        background: background ? background : "rgb(234 241 255)",
         position: "relative",
       }}
     >
