@@ -10,8 +10,9 @@ import { AuthUserContext } from "../components/Session";
 import Layout from "../components/layout";
 import FileUploader from "../components/AddReport/FileUploader";
 import File from "../components/AddReport/File";
-import { useForm } from 'react-hook-form';
-import {TextField} from '@material-ui/core'
+import { useForm } from "react-hook-form";
+import { TextField } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import {
   withAuthorization,
@@ -22,7 +23,18 @@ const Row = styled.div`
   margin-bottom: 1em;
 `;
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    "& .MuiTextField-root": {
+      focus: {
+        border: 0,
+      },
+    },
+  },
+}));
+
 const HomePageBase = () => {
+  const classes = useStyles();
   const authUser = useContext(AuthUserContext);
 
   const [files, setFiles] = useLocalStorage("userfiles", []);
@@ -48,7 +60,8 @@ const HomePageBase = () => {
         <span style={{ marginLeft: "1em" }}>Add a Report</span>
       </div>
       <form
-      onSubmit={handleSubmit(onSubmit)}
+        className={classes.root}
+        onSubmit={handleSubmit(onSubmit)}
         style={{
           verticalAlign: "middle",
           minHeight: "80vh",
@@ -56,11 +69,16 @@ const HomePageBase = () => {
         }}
       >
         <Row>
-        <TextField id="standard-basic" label="Title" name="title" inputRef={register}/>
+          <TextField
+            label="Title"
+            style={{ width: "100%" }}
+            name="title"
+            inputRef={register}
+          />
           {/* <b>Report Title</b>
           <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
         </Row>
- 
+
         <Row>
           {/* <b>Report Description</b>
           <TextareaAutosize
@@ -72,14 +90,13 @@ const HomePageBase = () => {
             }}
             id="myTextArea"
           /> */}
-            <TextField
-          id="standard-multiline-flexible"
-          label="Description"
-          multiline
-          name="description"
-          inputRef={register}
-  
-        />
+          <TextField
+            style={{ width: "100%" }}
+            label="Description"
+            multiline
+            name="description"
+            inputRef={register}
+          />
         </Row>
 
         <Row>
@@ -112,8 +129,8 @@ const HomePageBase = () => {
                 src="/AddReport/plus.svg"
               />
             </div> */}
-           </div>
-        </Row> 
+          </div>
+        </Row>
         <input type="submit" />
       </form>
     </>
