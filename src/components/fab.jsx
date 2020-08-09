@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import Icon from "../images/FAB/icon.svg";
 
 const FAB = () => {

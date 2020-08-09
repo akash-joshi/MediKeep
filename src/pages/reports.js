@@ -10,8 +10,14 @@ import FAB from "../components/fab";
 import AppBar from "../components/appBar";
 import Loader from "../components/Loader";
 
+import ReportCards from "../components/Containers/ReportCards";
+
 const HomePage = () => {
-  return <></>;
+  return (
+    <>
+      <ReportCards title="Blood Sugar" url="/" />
+    </>
+  );
 };
 
 const seo = {
