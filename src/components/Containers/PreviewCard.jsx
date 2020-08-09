@@ -5,7 +5,7 @@ import { navigate } from "gatsby";
 import styled from "styled-components";
 
 const Card = styled.div`
-  background: #f5f5f5;
+  background: #fff;
   border-radius: 12px;
   padding: 1em;
   filter: drop-shadow(10px 15px 20px rgba(41, 64, 134, 0.4));
@@ -36,7 +36,14 @@ const ViewDetails = styled.div`
 
 const PreviewCard = ({ info, show, category }) => {
   return (
-    <Card>
+    <Card
+      onClick={() => {
+        if (show)
+          navigate(
+            `/reports/view?id=${info.id}&title=${info.title}&category=${category}`,
+          );
+      }}
+    >
       <div
         className="valign-wrapper"
         style={{

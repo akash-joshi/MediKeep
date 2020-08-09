@@ -20,9 +20,8 @@ const ViewReport = () => {
         title: "Too high",
         description: "Good Report",
         media: [
-          "https://mpdc.dc.gov/sites/default/files/dc/sites/mpdc/page_content/images/OnlineReportingTool.jpg",
-          "https://mpdc.dc.gov/sites/default/files/dc/sites/mpdc/page_content/images/OnlineReportingTool.jpg",
-          "https://mpdc.dc.gov/sites/default/files/dc/sites/mpdc/page_content/images/OnlineReportingTool.jpg",
+          "https://sites.google.com/site/helpbikas/_/rsrc/1472868664768/medical-reports/Bikash%20-%20Medical%20Report.jpg?height=400&width=290",
+          "https://www.dotxls.org/wp-content/uploads/2016/05/MEDICAL-REPORT.png",
         ],
         tags: ["Blood Sugar"],
         created_at: "2020-02-01T00:00:00Z",

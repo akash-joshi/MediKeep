@@ -285,3 +285,7 @@ summary {
   -ms-flex-align: center;
   align-items: center;
 }
+
+button:focus {
+  outline: none;
+}

@@ -5,6 +5,9 @@ import moment from "moment";
 import { navigate } from "gatsby";
 import styled from "styled-components";
 
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
+
 const MediaPreview = styled.div`
   margin: 0.5em 0;
   display: grid;
@@ -38,7 +41,9 @@ const ViewReportCard = ({ info }) => {
       </div>
       <MediaPreview>
         {info.media.map((link, index) => (
-          <img src={link} key={index} />
+          <Zoom>
+            <img src={link} key={index} />
+          </Zoom>
         ))}
       </MediaPreview>
     </>
