@@ -6,7 +6,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
 
 import Layout from "../components/layout";
-import Loader from "../components/Loader";
+import FileUploader from "../components/AddReport/FileUploader";
 
 const Row = styled.div`
   margin-bottom: 1em;
@@ -28,7 +28,7 @@ const HomePage = () => {
         />
         <span style={{ marginLeft: "1em" }}>Add a Report</span>
       </div>
-      <div
+      <form
         style={{
           verticalAlign: "middle",
           minHeight: "80vh",
@@ -58,16 +58,31 @@ const HomePage = () => {
 
           <div
             style={{
-              width: "50%",
-              height: "calc(30vw * 2)",
-              boxShadow: "2px 5px 4px rgba(0, 0, 0, 0.25)",
-              textAlign: "center",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
             }}
           >
-            <img src="/AddReport/plus.svg" />
+            <FileUploader />
+            {/* <div
+              style={{
+                width: "90%",
+                height: "calc(30vw * 2)",
+                boxShadow: "2px 5px 4px rgba(0, 0, 0, 0.25)",
+                textAlign: "center",
+                marginTop: "1.5em",
+                marginLeft: "auto",
+                marginRight: "auto",
+                paddingTop: "50%",
+              }}
+            >
+              <img
+                style={{ height: 40, width: 40 }}
+                src="/AddReport/plus.svg"
+              />
+            </div> */}
           </div>
         </Row>
-      </div>
+      </form>
     </>
   );
 };
