@@ -289,3 +289,9 @@ summary {
 button:focus {
   outline: none;
 }
+
+.ui.labeled.icon.button,
+.ui.labeled.icon.buttons .button {
+  background: #4b6ed9;
+  color: white;
+}
