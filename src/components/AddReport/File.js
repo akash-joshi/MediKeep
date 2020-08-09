@@ -7,7 +7,7 @@ import { AuthUserContext } from "../Session";
 
 import Loader from "../Loader";
 
-function FileUploader(props) {
+function FileUploader({ fileURL }) {
   const [uploadingStatus, setUploadingStatus] = useState(0);
 
   const authUser = useContext(AuthUserContext);
@@ -95,44 +95,23 @@ function FileUploader(props) {
   };
 
   return (
-    <div>
-      <label htmlFor="file-uploader">
-        <div
-          style={{
-            width: "90%",
-            height: "calc(30vw * 2)",
-            boxShadow: "2px 5px 4px rgba(0, 0, 0, 0.25)",
-            textAlign: "center",
-            marginTop: "1.5em",
-            marginLeft: "auto",
-            marginRight: "auto",
-            paddingTop: "50%",
-          }}
-        >
-          {uploadingStatus === 0 && (
-            <img
-              style={{ height: 40, width: 40 }}
-              src="/AddReport/plus.svg"
-            />
-          )}
-          {uploadingStatus === 1 && <Loader />}
-        </div>
-      </label>
-
-      <input
-        className="browser-default"
-        style={{
-          opacity: 0,
-          position: "absolute",
-          zIndex: -1,
-        }}
-        accept={"image/*"}
-        type="file"
-        onChange={uploadFile}
-        id={`file-uploader`}
+    <div
+      style={{
+        width: "90%",
+        height: "calc(30vw * 2)",
+        boxShadow: "2px 5px 4px rgba(0, 0, 0, 0.25)",
+        textAlign: "center",
+        marginTop: "1.5em",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+    >
+      <img
+        style={{ height: "100%", width: "100%", objectFit: "cover" }}
+        src={fileURL}
       />
     </div>
   );
 }
 
-export default withFirebase(FileUploader);
+export default FileUploader;

@@ -1,18 +1,32 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, navigate } from "gatsby";
-
+import { compose } from "recompose";
 import { Icon, Input } from "semantic-ui-react";
 import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
+import { useLocalStorage } from "react-use";
 
+import { AuthUserContext } from "../components/Session";
 import Layout from "../components/layout";
 import FileUploader from "../components/AddReport/FileUploader";
+import File from "../components/AddReport/File";
+
+import {
+  withAuthorization,
+  withEmailVerification,
+} from "../components/Session";
 
 const Row = styled.div`
   margin-bottom: 1em;
 `;
 
-const HomePage = () => {
+const HomePageBase = () => {
+  const authUser = useContext(AuthUserContext);
+
+  const [files, setFiles] = useLocalStorage("userfiles", []);
+
+  console.log(files);
+
   return (
     <>
       <div
@@ -62,7 +76,10 @@ const HomePage = () => {
               gridTemplateColumns: "1fr 1fr",
             }}
           >
-            <FileUploader />
+            {files.map((fileURL, index) => (
+              <File key={index} fileURL={fileURL} />
+            ))}
+            <FileUploader uid={authUser} setFiles={setFiles} />
             {/* <div
               style={{
                 width: "90%",
@@ -90,6 +107,13 @@ const HomePage = () => {
 const seo = {
   title: "Home",
 };
+
+const condition = authUser => !!authUser;
+
+const HomePage = compose(
+  withEmailVerification,
+  withAuthorization(condition),
+)(HomePageBase);
 
 export default function Home() {
   return (
