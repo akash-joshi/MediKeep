@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "../components/appBar";
 import { useForm } from "react-hook-form";
 import { TextField } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import tags from "../components/tag-data.json";
 
 import {
   withAuthorization,
@@ -119,6 +121,24 @@ const HomePageBase = () => {
               />
             </div> */}
           </div>
+        </Row>
+        <Row>
+          <Autocomplete
+            multiple
+            options={tags}
+            getOptionLabel={option => option}
+            id="tags-standard"
+            renderInput={params => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Multiple values"
+                placeholder="Favorites"
+                name="tags"
+                inputRef={register}
+              />
+            )}
+          />
         </Row>
         <input type="submit" />
       </form>
