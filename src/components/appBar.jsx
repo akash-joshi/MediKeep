@@ -18,6 +18,8 @@ const appBar = ({ url, title }) => {
           padding: "0.5em",
           background: "#333333",
           color: "#fff",
+          height: 40,
+          width: 40,
         }}
       >
         <Icon

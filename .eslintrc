@@ -13,11 +13,13 @@
     "es6": true
   },
   "rules": {
+    "react/jsx-key": "warn",
+    "react/display-name": "warn",
     "prefer-destructuring": "error",
     "import/first": "error",
     "no-undef": "warn",
     "react/jsx-no-undef": "warn",
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "prefer-const": "error",
     "no-var": "error",
     "react/prop-types": "off",

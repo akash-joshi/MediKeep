@@ -6,7 +6,8 @@
     "deploy": "bash git.sh \"Pre-develop Autodeploy\" && gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "lint": "eslint --ext js,jsx,tsx . --fix --quiet"
   },
   "dependencies": {
     "babel-plugin-styled-components": "1.10.6",
@@ -23,6 +24,7 @@
     "gatsby-plugin-styled-components": "3.2.1",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-sharp": "^2.4.3",
+    "husky": "^4.2.5",
     "react": "^16.8.6",
     "react-countdown": "^2.2.1",
     "react-dom": "^16.8.6",
@@ -55,5 +57,10 @@
     "jest": "^26.0.1",
     "prettier": "^1.19.1",
     "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

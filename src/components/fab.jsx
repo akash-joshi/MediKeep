@@ -16,7 +16,10 @@ const FAB = () => {
           right: "5%",
         }}
       >
-        <img src={Icon} style={{ margin: 0 }} />
+        <img
+          src={Icon}
+          style={{ margin: 0, height: 50, width: 50 }}
+        />
       </div>
     </>
   );

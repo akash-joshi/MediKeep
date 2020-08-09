@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 export default function Test() {
   useEffect(() => {
-    let a = undefined;
+    const a = undefined;
     console.log(a.value);
   }, []);
 
