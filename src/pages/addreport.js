@@ -180,7 +180,7 @@ const HomePage = compose(
 export default function Home() {
   return (
     <div style={{ minHeight: "100vh" }}>
-      <AppBar title="Add A Report" url="/reports" />
+      <AppBar title="Add A Report" url="/reports" show={true} />
       <Layout seo={seo}>
         <HomePage />
       </Layout>

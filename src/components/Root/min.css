@@ -285,3 +285,9 @@ summary {
   -ms-flex-align: center;
   align-items: center;
 }
+
+.ui.labeled.icon.button,
+.ui.labeled.icon.buttons .button {
+  background: #4b6ed9;
+  color: white;
+}
