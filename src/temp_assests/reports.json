@@ -6,7 +6,11 @@
         "id": 1,
         "title": "Too high",
         "description": "Good Report",
-        "media": [],
+        "media": [
+          "https://mpdc.dc.gov/sites/default/files/dc/sites/mpdc/page_content/images/OnlineReportingTool.jpg",
+          "https://mpdc.dc.gov/sites/default/files/dc/sites/mpdc/page_content/images/OnlineReportingTool.jpg",
+          "https://mpdc.dc.gov/sites/default/files/dc/sites/mpdc/page_content/images/OnlineReportingTool.jpg"
+        ],
         "tags": ["Blood Sugar"],
         "created_at": "2020-02-01T00:00:00Z"
       },
