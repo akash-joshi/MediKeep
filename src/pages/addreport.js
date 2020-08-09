@@ -10,6 +10,7 @@ import { AuthUserContext } from "../components/Session";
 import Layout from "../components/layout";
 import FileUploader from "../components/AddReport/FileUploader";
 import File from "../components/AddReport/File";
+import AppBar from "../components/appBar";
 import { useForm } from 'react-hook-form';
 import {TextField} from '@material-ui/core'
 
@@ -34,19 +35,7 @@ const HomePageBase = () => {
   console.log(errors);
   return (
     <>
-      <div
-        style={{
-          fontSize: 20,
-          marginTop: "0.5em",
-        }}
-      >
-        <Icon
-          onClick={() => navigate("/")}
-          fitted
-          name="arrow left"
-        />
-        <span style={{ marginLeft: "1em" }}>Add a Report</span>
-      </div>
+      <AppBar title="Add A Report" url="/reports" />
       <form
       onSubmit={handleSubmit(onSubmit)}
         style={{

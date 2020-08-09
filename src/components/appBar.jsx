@@ -10,6 +10,7 @@ const appBar = ({ url, title }) => {
       style={{
         fontSize: 20,
         margin: "0.5em 0",
+        marginTop: "0em"
       }}
     >
       <div
