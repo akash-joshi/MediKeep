@@ -20,7 +20,8 @@ const HomePageBase = () => {
     <>
       <div
         style={{
-          fontSize: 20,
+          fontSize: 24,
+          fontWeight: 600,
           marginTop: "0.5em",
           textAlign: "right",
         }}
@@ -37,13 +38,12 @@ const HomePageBase = () => {
         <div style={{ margin: "auto", width: "100%" }}>
           <ClickableGradientCard
             url={"#"}
-            background="linear-gradient(203.55deg, #67B26F -4.43%, #4CA2CD 79.02%)"
+            background="linear-gradient(to right, #ff00cc, #333399)"
             text="Measurements"
           />
           <ClickableGradientCard
             url={"/reports"}
-            background="linear-gradient(203.55deg, #A770EF -4.43%, #CF8BF3 31.21%,
-      #FDB99B 79.02%)"
+            background="linear-gradient(to right, #000428, #004e92)"
             text="Reports"
           />
         </div>
@@ -65,7 +65,9 @@ const HomePage = compose(
 
 export default function Home() {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div
+      style={{ minHeight: "100vh", background: "rgb(234 241 255)" }}
+    >
       <Layout seo={seo}>
         <HomePage />
       </Layout>
