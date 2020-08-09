@@ -5,14 +5,14 @@ import styled from "styled-components";
 
 import { Dropdown } from "semantic-ui-react";
 
-import Layout from "../components/layout";
-import FAB from "../components/fab";
-import AppBar from "../components/appBar";
-import Loader from "../components/Loader";
+import Layout from "../../components/layout";
+import FAB from "../../components/fab";
+import AppBar from "../../components/appBar";
+import Loader from "../../components/Loader";
 
-import Reports from "../temp_assests/reports.json";
+import Reports from "../../temp_assests/reports.json";
 
-import ReportCards from "../components/Containers/ReportCards";
+import ReportCards from "../../components/Containers/ReportCards";
 
 const FilterGrid = styled.div`
   margin: 0.2em 0;
@@ -88,14 +88,14 @@ const HomePage = () => {
               category={report.category}
               items={report.items}
               key={index}
-              url="/"
+              url={`/reports/category?id=${report.category}`}
             />
           ) : report.category == filter ? (
             <ReportCards
               category={report.category}
               items={report.items}
               key={index}
-              url="/"
+              url={`/reports/category?id=${report.category}`}
             />
           ) : (
             <></>
@@ -113,8 +113,8 @@ const seo = {
 export default function Home() {
   return (
     <div style={{ minHeight: "100vh" }}>
+      <AppBar title="Reports" url="/" />
       <Layout seo={seo}>
-        <AppBar title="Reports" url="/" />
         <HomePage />
         <FAB />
       </Layout>

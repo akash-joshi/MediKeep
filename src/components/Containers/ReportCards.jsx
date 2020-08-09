@@ -4,6 +4,8 @@ import { navigate } from "gatsby";
 import styled from "styled-components";
 import { indexOf } from "core-js/fn/array";
 
+import PreviewCard from "./PreviewCard";
+
 const Wrapper = styled.div`
   padding: 0.5em;
 `;
@@ -25,25 +27,6 @@ const ViewAll = styled.div`
   color: #3354ff;
 `;
 
-const PreviewCard = styled.div`
-  background: #f5f5f5;
-  border-radius: 8px;
-  padding: 1em;
-
-  min-height: 15vh;
-  margin: 0.5em 0;
-  position: relative;
-  @media only screen and (max-width: 1000px) {
-    padding: 0.5em 1em;
-  }
-`;
-
-const MediaPreview = styled.div`
-  margin: 0.2em 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-`;
-
 const ReportCards = ({ category, items, url }) => {
   return (
     <>
@@ -58,35 +41,8 @@ const ReportCards = ({ category, items, url }) => {
             View All
           </ViewAll>
         </div>
-        {items.slice(0, 2).map((info, index) => (
-          <PreviewCard key={index}>
-            <div style={{ fontSize: 16, fontWeight: 600 }}>
-              {info.title}
-            </div>
-            <div
-              style={{
-                fontSize: 12,
-                fontWeight: 400,
-              }}
-            >
-              {info.description}
-            </div>
-            <MediaPreview>
-              {info.media.map((link, index) => (
-                <img
-                  src={link}
-                  key={index}
-                  style={{
-                    width: 85,
-                    height: 65,
-                  }}
-                />
-              ))}
-            </MediaPreview>
-            <div style={{ textAlign: "right" }}>
-              {info.created_at}
-            </div>
-          </PreviewCard>
+        {items.slice(0, 1).map((info, index) => (
+          <PreviewCard key={index} info={info} show={false} />
         ))}
       </Wrapper>
     </>
