@@ -1,4 +1,6 @@
 # MediKeep
+## Video
+[![Video Thumbnail](https://i.postimg.cc/dtkz1cfB/snip.png)](https://www.youtube.com/watch?v=9TbN9be0_sM)
 
 ## Inspiration
 In countries without centralized medical history storage like India, doctors and patients have to maintain their own copies for each document. This leads to problems in storage and in remembering each document’s physical or digital location. This makes doctor visits an arduous task.
