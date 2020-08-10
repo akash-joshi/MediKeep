@@ -11,3 +11,9 @@ In simple terms, it lets you maintain medical reports and medical measurements l
 2.  Firebase
 3.  Netlify
 
+## How to use it
+ 1. Install All Dependencies:
+ ```npm i```
+ 2. Start the Project:
+ ```npm start```
+
