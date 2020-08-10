@@ -11,6 +11,11 @@ In simple terms, it lets you maintain medical reports and medical measurements l
 2.  Firebase
 3.  Netlify
 
+## How it works
+1. A PWA has been built using Gatsby as our frontend that uses firebase for Authentication, file storage and database.
+2. The user sign's up to the platform, getting a view to upload and manage their reports.
+3. With all the reports in one place it gets easier to find and share medical history with doctor.
+
 ## How to use it
  1. Install All Dependencies:
  ```npm i```
