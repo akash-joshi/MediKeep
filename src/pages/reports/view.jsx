@@ -19,7 +19,7 @@ const ViewReport = () => {
         id: 1,
         title: "Too high",
         description:
-          "Logging is an important topic in software development, especially if you need to analyze bugs and other unexpected events in your production environment. Implementing your logging often seems easy. But as you probably experienced yourself, logging is far more complex than it might seem. That’s why you can find lots of articles about it here on the blog.",
+          "The doctor recommended me to eat less carbs. Have a more fat and protein based diet. Eat eggs at least twice a day and poop",
         media: [
           "https://sites.google.com/site/helpbikas/_/rsrc/1472868664768/medical-reports/Bikash%20-%20Medical%20Report.jpg?height=400&width=290",
           "https://www.dotxls.org/wp-content/uploads/2016/05/MEDICAL-REPORT.png",
