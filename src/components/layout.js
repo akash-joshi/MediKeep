@@ -6,9 +6,6 @@ import withAuthentication from "./Session/withAuthentication";
 import { useStaticQuery, graphql } from "gatsby";
 import "semantic-ui-css/semantic.min.css";
 
-import * as app from "firebase";
-import "firebase/firestore";
-
 import Root from "./Root";
 
 import Header from "./header";
@@ -27,6 +24,7 @@ class Layout extends Component {
   };
 
   componentDidMount() {
+    const app = import("firebase");
     const auth = import("firebase/auth");
     const database = import("firebase/database");
 

@@ -1,6 +1,3 @@
-import * as firebase from "firebase";
-import "firebase/firestore";
-
 // const firebaseConfig = require("../../../firebase.config");
 
 const config = {
