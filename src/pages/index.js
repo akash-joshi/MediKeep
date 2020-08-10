@@ -37,7 +37,7 @@ const HomePageBase = () => {
       >
         <div style={{ margin: "auto", width: "100%" }}>
           <ClickableGradientCard
-            url={"#"}
+            url={"https://diago.netlify.app"}
             background="linear-gradient(to right, #ff00cc, #333399)"
             text="Measurements"
           />

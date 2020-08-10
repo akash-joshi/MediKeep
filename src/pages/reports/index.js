@@ -23,16 +23,12 @@ const FilterGrid = styled.div`
 
 const DropdownList = [
   {
-    text: "Blood",
-    value: "Blood",
+    text: "Blood Sugar",
+    value: "Blood Sugar Reports",
   },
   {
-    text: "Sugar Yes Please",
-    value: "Sugar Yes Please",
-  },
-  {
-    text: "Say No More",
-    value: "Say No More",
+    text: "Arthritis",
+    value: "Arthritis Reports",
   },
   {
     text: "No Filters",

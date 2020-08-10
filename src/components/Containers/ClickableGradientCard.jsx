@@ -6,6 +6,9 @@ const ClickableGradientCard = ({ text, url, background }) => {
   return (
     <div
       onClick={() => {
+        if (url.search("http") > -1) {
+          return (location.href = url);
+        }
         navigate(url);
       }}
       style={{

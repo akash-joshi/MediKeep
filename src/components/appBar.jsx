@@ -4,6 +4,7 @@ import { navigate } from "gatsby";
 import { Icon } from "semantic-ui-react";
 
 const appBar = ({ url, title, show, background }) => {
+  console.log(process.env.SECRET)
   return (
     <div
       style={{
@@ -26,7 +27,7 @@ const appBar = ({ url, title, show, background }) => {
         <div
           style={{
             borderRadius: "50%",
-            padding: "0.3em 0.5em",
+            padding: "0.4em 0.5em",
             background: "white",
             color: "#294086",
             height: 40,
@@ -34,7 +35,7 @@ const appBar = ({ url, title, show, background }) => {
           }}
         >
           <Icon
-            onClick={() => navigate(url)}
+            onClick={() => history.back()}
             fitted
             name="arrow left"
             size="small"

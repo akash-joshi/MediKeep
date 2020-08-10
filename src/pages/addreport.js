@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, navigate } from "gatsby";
 import { compose } from "recompose";
-import { Icon, Input } from "semantic-ui-react";
-import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
 import { useLocalStorage } from "react-use";
+import Swal from "sweetalert2";
 
+import ViewReportCard from "../components/Containers/ViewReportCard";
 import { AuthUserContext } from "../components/Session";
 import Layout from "../components/layout";
 import FileUploader from "../components/AddReport/FileUploader";
@@ -58,38 +57,47 @@ const HomePageBase = () => {
   const authUser = useContext(AuthUserContext);
 
   const [files, setFiles] = useLocalStorage("userfiles", []);
+  const [reports, setReport] = useState([]);
 
   console.log(files);
 
   const { register, handleSubmit, errors, control } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    console.log(data);
+    setReport([{
+      ...data,
+      media: files
+    }])
+    return Swal.fire("Report Submitted", "", "success");
+  };
   console.error(errors);
   return (
     <>
-      <form
-        className={classes.root}
-        onSubmit={handleSubmit(onSubmit)}
-        style={{
-          verticalAlign: "middle",
-          minHeight: "90vh",
-          marginTop: "1em",
-          position: "relative",
-        }}
-      >
-        <Row>
-          <TextField
-            label="Title"
-            style={{ width: "100%" }}
-            name="title"
-            inputRef={register({ required: true })}
-            color="black"
-          />
-          {/* <b>Report Title</b>
+      {reports.length === 0 ? (
+        <form
+          className={classes.root}
+          onSubmit={handleSubmit(onSubmit)}
+          style={{
+            verticalAlign: "middle",
+            minHeight: "90vh",
+            marginTop: "1em",
+            position: "relative",
+          }}
+        >
+          <Row>
+            <TextField
+              label="Title"
+              style={{ width: "100%" }}
+              name="title"
+              inputRef={register({ required: true })}
+              color="black"
+            />
+            {/* <b>Report Title</b>
           <input style={{ width: "100%" }} name="title" ref={register({required: true, maxLength: 80})} /> */}
-        </Row>
+          </Row>
 
-        <Row>
-          {/* <b>Report Description</b>
+          <Row>
+            {/* <b>Report Description</b>
           <TextareaAutosize
             minRows={5}
             style={{
@@ -99,69 +107,78 @@ const HomePageBase = () => {
             }}
             id="myTextArea"
           /> */}
-          <TextField
-            style={{ width: "100%" }}
-            label="Description"
-            multiline
-            name="description"
-            color="black"
-            inputRef={register}
-          />
-        </Row>
+            <TextField
+              style={{ width: "100%" }}
+              label="Description"
+              multiline
+              name="description"
+              color="black"
+              inputRef={register}
+            />
+          </Row>
 
-        <Row>
-          <b>Add Reports (PDFs/Images)</b>
+          <Row>
+            <b>Add Reports (PDFs/Images)</b>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-            }}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+              }}
+            >
+              {files.map((fileURL, index) => (
+                <File key={index} fileURL={fileURL} />
+              ))}
+              <FileUploader uid={authUser} setFiles={setFiles} />
+            </div>
+          </Row>
+          <Row>
+            <Controller
+              as={
+                <Autocomplete
+                  multiple
+                  options={tags}
+                  getOptionLabel={option => option}
+                  id="tags-standard"
+                  renderInput={params => (
+                    <TextField
+                      {...params}
+                      variant="standard"
+                      label="Tests Performed"
+                    />
+                  )}
+                />
+              }
+              name="tags"
+              control={control}
+              defaultValue={[]}
+              rules={{
+                validate: value => {
+                  return !!value;
+                },
+                required: true,
+              }}
+              onChange={([, data]) => data}
+            />
+          </Row>
+
+          <Button
+            style={{ marginTop: "1em" }}
+            variant="outlined"
+            className={classes.root}
+            type="submit"
           >
-            {files.map((fileURL, index) => (
-              <File key={index} fileURL={fileURL} />
+            Save
+          </Button>
+        </form>
+      ) : (
+        <div>
+          {reports.length > 0 &&
+            reports.map((info, index) => (
+              <ViewReportCard key={index} info={info} show={true} />
             ))}
-            <FileUploader uid={authUser} setFiles={setFiles} />
-          </div>
-        </Row>
-        <Row>
-          <Controller
-            as={
-              <Autocomplete
-                multiple
-                options={tags}
-                getOptionLabel={option => option}
-                id="tags-standard"
-                renderInput={params => (
-                  <TextField
-                    {...params}
-                    variant="standard"
-                    label="Tests Performed"
-                  />
-                )}
-              />
-            }
-            name="tags"
-            control={control}
-            defaultValue={[]}
-            rules={{
-              validate: value => {
-                return !!value;
-              },
-              required: true,
-            }}
-            onChange={([, data]) => data}
-          />
-        </Row>
-
-        <Button
-          style={{ marginTop: "1em" }}
-          variant="outlined"
-          className={classes.root}
-        >
-          Save
-        </Button>
-      </form>
+        </div>
+      )}
     </>
   );
 };

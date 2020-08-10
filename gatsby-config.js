@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Essayer`,
+    title: `MediKeep`,
     description: `An online essay writing platform providing you a way
     to practise essays in a real environment, with real
     GRE topics.`,
@@ -25,12 +25,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Essayer`,
-        short_name: `Essayer`,
+        name: `MediKeep`,
+        short_name: `MediKeep`,
         start_url: `/`,
         background_color: `#eefff0`,
         theme_color: `#eefff0`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },

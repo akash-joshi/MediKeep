@@ -38,10 +38,9 @@ const PreviewCard = ({ info, show, category }) => {
   return (
     <Card
       onClick={() => {
-        if (show)
-          navigate(
-            `/reports/view?id=${info.id}&title=${info.title}&category=${category}`,
-          );
+        navigate(
+          `/reports/view?id=${info.id}&title=${info.title}&category=${category}`,
+        );
       }}
     >
       <div
